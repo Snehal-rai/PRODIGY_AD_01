@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-w4GQuCeOT9nbmrG5iZjKw8AvTQFiNCfaB5GlnAatlM46P0I/8ux3r81mIg0XgPmY" crossorigin="anonymous">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f0f0;
+        }
+
+        #calculator-frame {
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            padding: 20px;
+            width: 350px;
+        }
+
+        #calculator-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        #display {
+            width: 100%;
+            padding: 10px;
+            font-size: 1.6em;
+            border: none;
+            border-bottom: 1px solid #ccc;
+            outline: none;
+            text-align: center;
+            margin-bottom: 9sspx;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+        }
+
+        button {
+            border: 1px solid #ccc;
+            padding: 15px;
+            font-size: 1.2em;
+            cursor: pointer;
+            background: #f5f5f5;
+        }
+
+        .equal {
+            background: #4caf50;
+            color: #fff;
+        }
+
+        .backspace, .keyboard {
+            background: #ff9800;
+            color: #fff;
+        }
+
+        .buttons button:hover {
+            background: #e0e0e0;
+        }
+
+        .additional-features {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px;
+            background: #f5f5f5;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .additional-features i {
+            cursor: pointer;
+        }
+    </style>
+    <title>Calculator</title>
+</head>
+<body>
+    <div id="calculator-frame">
+        <div id="calculator-title">Calculator</div>
+        <input type="text" id="display" disabled>
+        <div class="additional-features">
+            <i class="fas fa-backspace backspace" onclick="backspace()"></i>
+            <i class="fas fa-keyboard keyboard" onclick="toggleKeyboard()"></i>
+        </div>
+        <div class="buttons">
+            <button onclick="clearDisplay()">C</button>
+            <button onclick="appendToDisplay('/')">&#247;</button>
+            <button onclick="appendToDisplay('*')">&#215;</button>
+            <button onclick="appendToDisplay('7')">7</button>
+            <button onclick="appendToDisplay('8')">8</button>
+            <button onclick="appendToDisplay('9')">9</button>
+            <button onclick="appendToDisplay('-')">-</button>
+            <button onclick="appendToDisplay('4')">4</button>
+            <button onclick="appendToDisplay('5')">5</button>
+            <button onclick="appendToDisplay('6')">6</button>
+            <button onclick="appendToDisplay('+')">+</button>
+            <button onclick="appendToDisplay('1')">1</button>
+            <button onclick="appendToDisplay('2')">2</button>
+            <button onclick="appendToDisplay('3')">3</button>
+            <button class="equal" onclick="calculate()">=</button>
+            <button onclick="appendToDisplay('0')">0</button>
+            <button onclick="appendToDisplay('.')">.</button>
+        </div>
+    </div>
+    <script>
+        function appendToDisplay(value) {
+            document.getElementById('display').value += value;
+        }
+
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+
+        function backspace() {
+            let currentValue = document.getElementById('display').value;
+            document.getElementById('display').value = currentValue.slice(0, -1);
+        }
+
+        function calculate() {
+            try {
+                document.getElementById('display').value = eval(document.getElementById('display').value);
+            } catch (error) {
+                document.getElementById('display').value = 'Error';
+            }
+        }
+
+        function toggleKeyboard() {
+            alert("Toggle keyboard feature can be implemented here!");
+        }
+    </script>
+</body>
+</html>
+
